@@ -1,0 +1,36 @@
+{
+  "name": "node-passport-auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env DEBUG=DEV nodemon --exec babel-node src/index.js",
+    "build": "rimraf dist && babel src --out-dir dist && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/femiabimbola/Passport-Auth-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/femiabimbola/Passport-Auth-nodejs/issues"
+  },
+  "homepage": "https://github.com/femiabimbola/Passport-Auth-nodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.15",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.1",
+    "nodemon": "^2.0.6",
+    "rimraf": "^3.0.2"
+  }
+}

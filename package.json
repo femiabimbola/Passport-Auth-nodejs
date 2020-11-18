@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/femiabimbola/Passport-Auth-nodejs#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "mongoose": "^5.10.15",
     "passport": "^0.4.1",

@@ -1,6 +1,6 @@
 import express from 'express';
 import routes from './routes'
-import expressLayout from 'express-ejs-Layouts'
+import expressLayout from 'express-ejs-layouts'
 
 const app = express();
 

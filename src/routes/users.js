@@ -46,6 +46,11 @@ userRouter.post('/register', (req, res) => {
                   errors, name, email, password, password2
                 });
             } else {
+              const newUser = new User({
+                name, email, password
+                });
+                console.log(newUser)
+                res.send('Passed')
 
             }
         })

@@ -1,8 +1,7 @@
 import { Router } from "express";
 import User from "../../models/Users";
 import bcrypt, { hash } from 'bcryptjs';
-import flash from "connect-flash";
-import sessipn from 'express-session';
+
 
 const userRouter = Router();
 
@@ -48,18 +47,17 @@ userRouter.post('/register', (req, res) => {
                   errors, name, email, password, password2
                 });
             } else {
-              const newUser = new User({
-                name, email, password
-                });
-                bcrypt.genSalt(10, (err, salt) => {
+              const newUser = new User({name, email, password });
+                bcrypt.genSalt(10, (err, salt) => { 
                     bcrypt.hash(newUser.password, salt, (err, hash) => {
                      if(err) throw err;
                      newUser.password = hash;
                      newUser.save()
                         .then( user => {
+                            req.flash('success_msg', 'You are now registered and can log in')
                             res.status(201).redirect('../users/login')
                         })
-                        .then(err => console.log(err))   
+                        .catch(err => console.log(err))   
                     })
                 })
             }

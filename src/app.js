@@ -4,6 +4,8 @@ import expressLayout from 'express-ejs-layouts';
 import mongoose from 'mongoose';
 import  db  from '../config';
 import Debug from 'debug';
+import flash from "connect-flash";
+import session, { Session } from 'express-session';
 
 const app = express();
 
@@ -14,6 +16,21 @@ app.set('view engine', 'ejs');
 //Extended is false because req.body will give info
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// Express session
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+// Connect Flash
+app.use(flash());
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
+});
 
 
 app.get('/', (req, res) => {
